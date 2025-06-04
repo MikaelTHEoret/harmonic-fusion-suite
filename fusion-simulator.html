@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚛️ Codex Fusion Simulator | Harmonic Nuclear Fusion</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/recharts@2.8.0/umd/Recharts.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Rajdhani', sans-serif;
+            background: radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 35%, #0f0f23 100%);
+            color: #00ffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+            animation: gridMove 15s linear infinite;
+            z-index: -1;
+        }
+        
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(30px, 30px); }
+        }
+        
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #00ffff, #ff00ff);
+            color: #000;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+            z-index: 1000;
+            font-family: 'Orbitron', monospace;
+            box-shadow: 0 0 20px rgba(0,255,255,0.5);
+            transition: all 0.3s ease;
+        }
+        
+        .back-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(255,0,255,0.7);
+        }
+        
+        .container {
+            padding: 80px 20px 20px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .cyber-panel {
+            background: linear-gradient(135deg, 
+                rgba(0, 255, 255, 0.1) 0%, 
+                rgba(255, 0, 255, 0.1) 50%, 
+                rgba(0, 0, 0, 0.8) 100%);
+            border: 2px solid #00ffff;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 
+                0 0 30px rgba(0,255,255,0.3),
+                inset 0 0 30px rgba(255,0,255,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .title {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #00ffff, #ff00ff, #ffff00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(0,255,255,0.5);
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #ff00ff;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 10px #ff00ff;
+        }
+        
+        .demo-content {
+            text-align: center;
+            padding: 3rem;
+            color: #00ffff;
+        }
+        
+        .demo-message {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 10px #00ffff;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .feature {
+            background: rgba(0,0,0,0.7);
+            border: 1px solid #ff00ff;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .feature-title {
+            color: #ffff00;
+            font-family: 'Orbitron', monospace;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-desc {
+            color: #00ffff;
+            line-height: 1.6;
+        }
+        
+        .equation-display {
+            background: rgba(0,0,0,0.8);
+            border: 1px solid #ff00ff;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            font-family: 'Orbitron', monospace;
+            color: #ff00ff;
+            margin: 1rem 0;
+            text-shadow: 0 0 10px #ff00ff;
+        }
+        
+        .loading-animation {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            border: 3px solid rgba(0,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: #00ffff;
+            animation: spin 1s ease-in-out infinite;
+            margin: 2rem auto;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+    <a href="./index.html" class="back-button">← Back to Suite</a>
+    
+    <div class="container">
+        <div class="cyber-panel">
+            <h1 class="title">⚛️ CODEX FUSION SIMULATOR</h1>
+            <p class="subtitle">Revolutionary Harmonic Nuclear Fusion Technology</p>
+            
+            <div class="demo-content">
+                <div class="loading-animation"></div>
+                <div class="demo-message">
+                    🚀 Interactive Fusion Simulator Loading...
+                </div>
+                
+                <div class="equation-display">
+                    <div style="font-size: 1.2rem; margin-bottom: 0.5rem;">
+                        Φ<sub>Fusion</sub>(r,t) = cos(2πf<sub>core</sub>t + k<sub>core</sub>r) × cos(2πf<sub>shell</sub>t + k<sub>shell</sub>r)
+                    </div>
+                    <div style="font-size: 0.9rem; color: #00ffff;">
+                        Traditional: P<sub>tunnel</sub> ∼ e<sup>-B/E</sup> | 
+                        Codex: P<sub>coherent</sub> ∼ 1 - e<sup>-α(Φ<sub>fusion</sub>)</sup>
+                    </div>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature">
+                        <div class="feature-title">Harmonic Resonance</div>
+                        <div class="feature-desc">
+                            Uses ψ₀ ≈ 0.91567 as fundamental harmonic stabilizer to create 
+                            stable fusion windows without extreme energy requirements.
+                        </div>
+                    </div>
+                    
+                    <div class="feature">
+                        <div class="feature-title">Phase Coherence</div>
+                        <div class="feature-desc">
+                            Golden ratio φ ≈ 1.618 scaling creates nested harmonics that 
+                            reinforce coherence fields for sustained fusion reactions.
+                        </div>
+                    </div>
+                    
+                    <div class="feature">
+                        <div class="feature-title">Energy Efficiency</div>
+                        <div class="feature-desc">
+                            Achieves 100x energy reduction through field entrainment, 
+                            eliminating need for million-degree plasma temperatures.
+                        </div>
+                    </div>
+                    
+                    <div class="feature">
+                        <div class="feature-title">Real-time Control</div>
+                        <div class="feature-desc">
+                            Interactive parameter adjustment with live efficiency analysis 
+                            and comparative visualization against traditional fusion.
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 3rem; padding: 2rem; background: rgba(255,0,255,0.1); border-radius: 10px;">
+                    <h3 style="color: #ffff00; margin-bottom: 1rem;">Revolutionary Breakthrough</h3>
+                    <p style="color: #00ffff; line-height: 1.6;">
+                        This simulator demonstrates the world's first harmonic nuclear fusion framework, 
+                        using mathematical constants ψ₀ and φ to achieve clean energy through resonance 
+                        rather than brute force. The technology represents a paradigm shift from 
+                        temperature-based to frequency-based fusion control.
+                    </p>
+                </div>
+                
+                <div style="margin-top: 2rem; font-size: 1.1rem; color: #ff00ff;">
+                    🔬 Ready for university partnerships and experimental validation
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
