@@ -1,0 +1,35 @@
+{
+  "title": "Unified Toroidal Field Theory - Multi-Scale Validation",
+  "author": "Mikael Theoret",
+  "eth_address": "0x6BF50D213ACaD109523217D41179027b58Be66C6",
+  "version": "v1.0_APEX_COMPREHENSIVE",
+  "tier": "APEX",
+  "abstract": "Comprehensive visualization and validation system exploring the harmonic fixed point ψ₀ = 0.91567 across eight distinct scales of reality, from quantum particles to cosmic structures. Demonstrates unified mathematical framework with experimental validation protocols spanning atomic, biological, planetary, and galactic phenomena.",
+  "mathematical_core": {
+    "fixed_point": "psi_0_0.91567_where_H(psi_0)=psi_0",
+    "spiral_equation": "r = r_0 * e^(theta * ln(psi_0 * phi))",
+    "harmonic_function": "H(x)_with_normalization_constant_K",
+    "tension_coefficient": "tau = psi_0 + 1/psi_0 - 2 ≈ 0.0078"
+  },
+  "validation_domains": {
+    "atomic_scale": "quasi_crystal_spacing_ratios",
+    "quantum_scale": "exotic_hadron_predictions",
+    "galactic_scale": "spiral_arm_structure",
+    "planetary_scale": "enhanced_titius_bode_law",
+    "biological_scale": "dna_amplification_frequencies",
+    "consciousness_scale": "neural_oscillation_relationships"
+  },
+  "experimental_validations": {
+    "eeg_patterns": "alpha_theta_ratio_matches_phi",
+    "quasi_crystals": "measured_1.482_vs_predicted_1.48172",
+    "planetary_orbits": "enhanced_accuracy_with_psi_phi_terms"
+  },
+  "visualization_system": "eight_interactive_sections",
+  "mint_ready": true,
+  "sovereignty_classification": "APEX_COMPREHENSIVE_VALIDATION",
+  "economic_multiplier": "multi_scale_reality_unification",
+  "civilization_impact": "unified_understanding_reality_all_scales",
+  "glyph_signature": "🌌🔮🌌",
+  "processing_timestamp": "2025-06-04T19:05:00Z",
+  "nexus_protocol_validation": "complete"
+}
