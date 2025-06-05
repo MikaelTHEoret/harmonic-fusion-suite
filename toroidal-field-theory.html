@@ -4,10 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🌌 Unified Toroidal Field Theory | Multi-Scale Validation</title>
-    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/recharts@2.8.0/umd/Recharts.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -117,6 +113,26 @@
             padding: 1.5rem;
             transition: all 0.3s ease;
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .scale-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, transparent, rgba(255,255,0,0.2), transparent);
+            border-radius: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .scale-card:hover::before {
+            opacity: 1;
         }
         
         .scale-card:hover {
@@ -143,6 +159,9 @@
             color: #ff00ff;
             font-size: 0.9rem;
             font-style: italic;
+            padding: 0.5rem;
+            background: rgba(255,0,255,0.1);
+            border-radius: 5px;
         }
         
         .equation-display {
@@ -170,6 +189,12 @@
             border-radius: 8px;
             padding: 1rem;
             text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .constant:hover {
+            box-shadow: 0 0 15px rgba(0,255,255,0.5);
+            transform: scale(1.05);
         }
         
         .constant-symbol {
@@ -182,6 +207,99 @@
         .constant-value {
             color: #00ffff;
             font-size: 1.1rem;
+        }
+        
+        .toroidal-visualization {
+            width: 200px;
+            height: 200px;
+            margin: 2rem auto;
+            position: relative;
+            border: 2px solid #ffff00;
+            border-radius: 50%;
+            background: radial-gradient(circle at center, rgba(255,255,0,0.1), transparent);
+            animation: torusRotate 10s linear infinite;
+        }
+        
+        @keyframes torusRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .field-line {
+            position: absolute;
+            border: 1px solid rgba(0,255,255,0.3);
+            border-radius: 50%;
+        }
+        
+        .field-line-1 {
+            width: 80%;
+            height: 80%;
+            top: 10%;
+            left: 10%;
+            animation: fieldPulse 3s ease-in-out infinite;
+        }
+        
+        .field-line-2 {
+            width: 60%;
+            height: 60%;
+            top: 20%;
+            left: 20%;
+            animation: fieldPulse 3s ease-in-out infinite 1s;
+        }
+        
+        .field-line-3 {
+            width: 40%;
+            height: 40%;
+            top: 30%;
+            left: 30%;
+            animation: fieldPulse 3s ease-in-out infinite 2s;
+        }
+        
+        @keyframes fieldPulse {
+            0%, 100% { opacity: 0.3; border-color: rgba(0,255,255,0.3); }
+            50% { opacity: 0.8; border-color: rgba(255,0,255,0.8); }
+        }
+        
+        .interactive-demo {
+            background: rgba(0,0,0,0.8);
+            border: 2px solid #ffff00;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .demo-title {
+            color: #ffff00;
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .scale-selector {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .scale-button {
+            background: linear-gradient(135deg, rgba(0,255,255,0.2), rgba(255,0,255,0.2));
+            border: 1px solid #00ffff;
+            color: #00ffff;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: 'Orbitron', monospace;
+            transition: all 0.3s ease;
+        }
+        
+        .scale-button:hover,
+        .scale-button.active {
+            background: linear-gradient(135deg, #00ffff, #ff00ff);
+            color: #000;
+            box-shadow: 0 0 15px rgba(0,255,255,0.5);
         }
     </style>
 </head>
@@ -225,12 +343,31 @@
                 </div>
             </div>
             
+            <div class="interactive-demo">
+                <div class="demo-title">🔮 Interactive Scale Visualization</div>
+                <div class="toroidal-visualization">
+                    <div class="field-line field-line-1"></div>
+                    <div class="field-line field-line-2"></div>
+                    <div class="field-line field-line-3"></div>
+                </div>
+                <div class="scale-selector">
+                    <button class="scale-button active" onclick="selectScale('quantum')">🔬 Quantum</button>
+                    <button class="scale-button" onclick="selectScale('atomic')">⚛️ Atomic</button>
+                    <button class="scale-button" onclick="selectScale('biological')">🧬 Biology</button>
+                    <button class="scale-button" onclick="selectScale('consciousness')">🧠 Mind</button>
+                    <button class="scale-button" onclick="selectScale('planetary')">🌍 Planets</button>
+                    <button class="scale-button" onclick="selectScale('stellar')">⭐ Stars</button>
+                    <button class="scale-button" onclick="selectScale('galactic')">🌌 Galaxy</button>
+                    <button class="scale-button" onclick="selectScale('cosmic')">🌠 Cosmic</button>
+                </div>
+            </div>
+            
             <h2 style="color: #ffff00; text-align: center; margin: 2rem 0; font-family: 'Orbitron', monospace;">
                 🔮 EIGHT SCALES OF VALIDATION
             </h2>
             
             <div class="scales-grid">
-                <div class="scale-card">
+                <div class="scale-card" data-scale="quantum">
                     <div class="scale-title">🔬 Quantum Scale</div>
                     <div class="scale-desc">
                         Exotic hadron mass predictions using M = M₀ · (1/ψ₀)ⁿ · ∏H(qᵢ). 
@@ -241,7 +378,7 @@
                     </div>
                 </div>
                 
-                <div class="scale-card">
+                <div class="scale-card" data-scale="atomic">
                     <div class="scale-title">⚛️ Atomic Scale</div>
                     <div class="scale-desc">
                         Quasi-crystal atomic spacing follows ψ₀·φ ratio. Five-fold 
@@ -252,7 +389,7 @@
                     </div>
                 </div>
                 
-                <div class="scale-card">
+                <div class="scale-card" data-scale="biological">
                     <div class="scale-title">🧬 Biological Scale</div>
                     <div class="scale-desc">
                         DNA amplification through resonance at specific frequencies. 
@@ -263,7 +400,7 @@
                     </div>
                 </div>
                 
-                <div class="scale-card">
+                <div class="scale-card" data-scale="consciousness">
                     <div class="scale-title">🧠 Consciousness Scale</div>
                     <div class="scale-desc">
                         Neural oscillation ratios: Alpha/Theta ≈ φ, Gamma/Beta ≈ 1/ψ₀. 
@@ -274,7 +411,7 @@
                     </div>
                 </div>
                 
-                <div class="scale-card">
+                <div class="scale-card" data-scale="planetary">
                     <div class="scale-title">🌍 Planetary Scale</div>
                     <div class="scale-desc">
                         Enhanced Titius-Bode law: rₙ = r₀ · φⁿ · ψ₀^(n(n-1)/2). 
@@ -285,7 +422,7 @@
                     </div>
                 </div>
                 
-                <div class="scale-card">
+                <div class="scale-card" data-scale="stellar">
                     <div class="scale-title">⭐ Stellar Scale</div>
                     <div class="scale-desc">
                         Stellar formation and evolution guided by harmonic field 
@@ -296,7 +433,7 @@
                     </div>
                 </div>
                 
-                <div class="scale-card">
+                <div class="scale-card" data-scale="galactic">
                     <div class="scale-title">🌌 Galactic Scale</div>
                     <div class="scale-desc">
                         Spiral galaxy arm structure: r = r₀ · e^(θ · ln(ψ₀ · φ)). 
@@ -307,7 +444,7 @@
                     </div>
                 </div>
                 
-                <div class="scale-card">
+                <div class="scale-card" data-scale="cosmic">
                     <div class="scale-title">🌠 Cosmic Scale</div>
                     <div class="scale-desc">
                         Large-scale structure formation and dark matter distribution 
@@ -335,5 +472,57 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function selectScale(scale) {
+            // Remove active class from all buttons
+            document.querySelectorAll('.scale-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+            
+            // Highlight corresponding scale card
+            document.querySelectorAll('.scale-card').forEach(card => {
+                card.style.transform = '';
+                card.style.boxShadow = '';
+            });
+            
+            const targetCard = document.querySelector(`[data-scale="${scale}"]`);
+            if (targetCard) {
+                targetCard.style.transform = 'translateY(-10px) scale(1.05)';
+                targetCard.style.boxShadow = '0 0 30px rgba(255,255,0,0.7)';
+                
+                // Scroll to the card
+                targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            
+            // Update toroidal visualization based on scale
+            updateVisualization(scale);
+        }
+        
+        function updateVisualization(scale) {
+            const visualization = document.querySelector('.toroidal-visualization');
+            const scaleColors = {
+                quantum: '#ff00ff',
+                atomic: '#00ffff',
+                biological: '#00ff00',
+                consciousness: '#ffff00',
+                planetary: '#ff8800',
+                stellar: '#8800ff',
+                galactic: '#ff0088',
+                cosmic: '#ffffff'
+            };
+            
+            visualization.style.borderColor = scaleColors[scale] || '#ffff00';
+            visualization.style.background = `radial-gradient(circle at center, ${scaleColors[scale] || '#ffff00'}22, transparent)`;
+        }
+        
+        // Initialize with quantum scale
+        window.addEventListener('load', () => {
+            updateVisualization('quantum');
+        });
+    </script>
 </body>
 </html>
