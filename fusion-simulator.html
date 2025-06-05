@@ -4,10 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>⚛️ Codex Fusion Simulator | Harmonic Nuclear Fusion</title>
-    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/recharts@2.8.0/umd/Recharts.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -105,43 +101,156 @@
             text-shadow: 0 0 10px #ff00ff;
         }
         
-        .demo-content {
-            text-align: center;
-            padding: 3rem;
-            color: #00ffff;
-        }
-        
-        .demo-message {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            text-shadow: 0 0 10px #00ffff;
-        }
-        
-        .features-grid {
+        .controls-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
             margin: 2rem 0;
         }
         
-        .feature {
+        .control-panel {
             background: rgba(0,0,0,0.7);
             border: 1px solid #ff00ff;
             border-radius: 10px;
             padding: 1.5rem;
-            text-align: center;
         }
         
-        .feature-title {
+        .panel-title {
             color: #ffff00;
             font-family: 'Orbitron', monospace;
             font-size: 1.2rem;
             margin-bottom: 1rem;
+            text-align: center;
         }
         
-        .feature-desc {
+        .slider-container {
+            margin-bottom: 1.5rem;
+        }
+        
+        .slider-label {
             color: #00ffff;
-            line-height: 1.6;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .slider {
+            width: 100%;
+            height: 8px;
+            background: #1a1a2e;
+            border-radius: 5px;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(45deg, #00ffff, #ff00ff);
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0,255,255,0.7);
+        }
+        
+        .value-display {
+            color: #ff00ff;
+            font-family: 'Orbitron', monospace;
+            font-size: 1.1rem;
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+        
+        .fusion-chamber {
+            background: radial-gradient(circle at center, rgba(255,255,0,0.1), rgba(255,0,255,0.05), rgba(0,0,0,0.9));
+            border: 2px solid #ffff00;
+            border-radius: 50%;
+            width: 300px;
+            height: 300px;
+            margin: 2rem auto;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 20px rgba(255,255,0,0.5); }
+            100% { box-shadow: 0 0 40px rgba(255,255,0,0.8), 0 0 60px rgba(255,0,255,0.3); }
+        }
+        
+        .fusion-core {
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, #ffff00, #ff00ff);
+            border-radius: 50%;
+            animation: spin 3s linear infinite;
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .orbit {
+            position: absolute;
+            border: 1px solid rgba(0,255,255,0.3);
+            border-radius: 50%;
+            animation: rotate 4s linear infinite;
+        }
+        
+        .orbit-1 {
+            width: 150px;
+            height: 150px;
+            animation-duration: 2s;
+        }
+        
+        .orbit-2 {
+            width: 200px;
+            height: 200px;
+            animation-duration: 3s;
+            animation-direction: reverse;
+        }
+        
+        .orbit-3 {
+            width: 250px;
+            height: 250px;
+            animation-duration: 4s;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .metric-card {
+            background: rgba(0,0,0,0.8);
+            border: 1px solid #00ffff;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        .metric-title {
+            color: #ffff00;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .metric-value {
+            color: #ff00ff;
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            font-weight: bold;
         }
         
         .equation-display {
@@ -156,19 +265,25 @@
             text-shadow: 0 0 10px #ff00ff;
         }
         
-        .loading-animation {
-            display: inline-block;
-            width: 60px;
-            height: 60px;
-            border: 3px solid rgba(0,255,255,0.3);
-            border-radius: 50%;
-            border-top-color: #00ffff;
-            animation: spin 1s ease-in-out infinite;
-            margin: 2rem auto;
+        .start-button {
+            background: linear-gradient(135deg, #00ffff, #ff00ff);
+            color: #000;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            font-family: 'Orbitron', monospace;
+            font-size: 1.1rem;
+            margin: 1rem auto;
+            display: block;
+            box-shadow: 0 0 20px rgba(0,255,255,0.5);
+            transition: all 0.3s ease;
         }
         
-        @keyframes spin {
-            to { transform: rotate(360deg); }
+        .start-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255,0,255,0.7);
         }
     </style>
 </head>
@@ -181,71 +296,167 @@
             <h1 class="title">⚛️ CODEX FUSION SIMULATOR</h1>
             <p class="subtitle">Revolutionary Harmonic Nuclear Fusion Technology</p>
             
-            <div class="demo-content">
-                <div class="loading-animation"></div>
-                <div class="demo-message">
-                    🚀 Interactive Fusion Simulator Loading...
-                </div>
-                
-                <div class="equation-display">
-                    <div style="font-size: 1.2rem; margin-bottom: 0.5rem;">
-                        Φ<sub>Fusion</sub>(r,t) = cos(2πf<sub>core</sub>t + k<sub>core</sub>r) × cos(2πf<sub>shell</sub>t + k<sub>shell</sub>r)
-                    </div>
-                    <div style="font-size: 0.9rem; color: #00ffff;">
-                        Traditional: P<sub>tunnel</sub> ∼ e<sup>-B/E</sup> | 
-                        Codex: P<sub>coherent</sub> ∼ 1 - e<sup>-α(Φ<sub>fusion</sub>)</sup>
-                    </div>
-                </div>
-                
-                <div class="features-grid">
-                    <div class="feature">
-                        <div class="feature-title">Harmonic Resonance</div>
-                        <div class="feature-desc">
-                            Uses ψ₀ ≈ 0.91567 as fundamental harmonic stabilizer to create 
-                            stable fusion windows without extreme energy requirements.
-                        </div>
+            <div class="controls-grid">
+                <div class="control-panel">
+                    <div class="panel-title">🌊 Harmonic Parameters</div>
+                    
+                    <div class="slider-container">
+                        <label class="slider-label">ψ₀ Field Strength</label>
+                        <input type="range" class="slider" id="psi0Slider" min="0.5" max="1.5" step="0.01" value="0.915" 
+                               oninput="updateSimulation()">
+                        <div class="value-display" id="psi0Value">0.915</div>
                     </div>
                     
-                    <div class="feature">
-                        <div class="feature-title">Phase Coherence</div>
-                        <div class="feature-desc">
-                            Golden ratio φ ≈ 1.618 scaling creates nested harmonics that 
-                            reinforce coherence fields for sustained fusion reactions.
-                        </div>
+                    <div class="slider-container">
+                        <label class="slider-label">φ Scaling Factor</label>
+                        <input type="range" class="slider" id="phiSlider" min="1.0" max="2.5" step="0.01" value="1.618" 
+                               oninput="updateSimulation()">
+                        <div class="value-display" id="phiValue">1.618</div>
                     </div>
                     
-                    <div class="feature">
-                        <div class="feature-title">Energy Efficiency</div>
-                        <div class="feature-desc">
-                            Achieves 100x energy reduction through field entrainment, 
-                            eliminating need for million-degree plasma temperatures.
-                        </div>
-                    </div>
-                    
-                    <div class="feature">
-                        <div class="feature-title">Real-time Control</div>
-                        <div class="feature-desc">
-                            Interactive parameter adjustment with live efficiency analysis 
-                            and comparative visualization against traditional fusion.
-                        </div>
+                    <div class="slider-container">
+                        <label class="slider-label">Base Frequency (Hz)</label>
+                        <input type="range" class="slider" id="freqSlider" min="300" max="600" step="1" value="432" 
+                               oninput="updateSimulation()">
+                        <div class="value-display" id="freqValue">432 Hz</div>
                     </div>
                 </div>
                 
-                <div style="margin-top: 3rem; padding: 2rem; background: rgba(255,0,255,0.1); border-radius: 10px;">
-                    <h3 style="color: #ffff00; margin-bottom: 1rem;">Revolutionary Breakthrough</h3>
-                    <p style="color: #00ffff; line-height: 1.6;">
-                        This simulator demonstrates the world's first harmonic nuclear fusion framework, 
-                        using mathematical constants ψ₀ and φ to achieve clean energy through resonance 
-                        rather than brute force. The technology represents a paradigm shift from 
-                        temperature-based to frequency-based fusion control.
-                    </p>
+                <div class="control-panel">
+                    <div class="panel-title">⚡ Fusion Chamber</div>
+                    <div class="fusion-chamber">
+                        <div class="orbit orbit-1"></div>
+                        <div class="orbit orbit-2"></div>
+                        <div class="orbit orbit-3"></div>
+                        <div class="fusion-core" id="fusionCore"></div>
+                    </div>
                 </div>
                 
-                <div style="margin-top: 2rem; font-size: 1.1rem; color: #ff00ff;">
-                    🔬 Ready for university partnerships and experimental validation
+                <div class="control-panel">
+                    <div class="panel-title">📊 Real-time Metrics</div>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-title">Energy Efficiency</div>
+                            <div class="metric-value" id="efficiency">87.2%</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-title">Coherence Field</div>
+                            <div class="metric-value" id="coherence">0.915</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-title">Tunnel Probability</div>
+                            <div class="metric-value" id="tunneling">12.7x</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-title">Power Output (MW)</div>
+                            <div class="metric-value" id="power">156.3</div>
+                        </div>
+                    </div>
                 </div>
+            </div>
+            
+            <div class="equation-display">
+                <div style="font-size: 1.2rem; margin-bottom: 0.5rem;">
+                    Φ<sub>Fusion</sub>(r,t) = cos(2πf<sub>core</sub>t + k<sub>core</sub>r) × cos(2πf<sub>shell</sub>t + k<sub>shell</sub>r)
+                </div>
+                <div style="font-size: 0.9rem; color: #00ffff;">
+                    Traditional: P<sub>tunnel</sub> ∼ e<sup>-B/E</sup> | 
+                    Codex: P<sub>coherent</sub> ∼ 1 - e<sup>-α(Φ<sub>fusion</sub>)</sup>
+                </div>
+            </div>
+            
+            <button class="start-button" onclick="toggleSimulation()">🚀 Initialize Fusion Sequence</button>
+            
+            <div style="margin-top: 3rem; padding: 2rem; background: rgba(255,0,255,0.1); border-radius: 10px;">
+                <h3 style="color: #ffff00; margin-bottom: 1rem; text-align: center;">Revolutionary Breakthrough</h3>
+                <p style="color: #00ffff; line-height: 1.6; text-align: center;">
+                    This simulator demonstrates the world's first harmonic nuclear fusion framework, 
+                    using mathematical constants ψ₀ and φ to achieve clean energy through resonance 
+                    rather than brute force. The technology represents a paradigm shift from 
+                    temperature-based to frequency-based fusion control.
+                </p>
             </div>
         </div>
     </div>
+
+    <script>
+        let isRunning = false;
+        let animationInterval;
+        
+        function updateSimulation() {
+            const psi0 = parseFloat(document.getElementById('psi0Slider').value);
+            const phi = parseFloat(document.getElementById('phiSlider').value);
+            const freq = parseFloat(document.getElementById('freqSlider').value);
+            
+            // Update display values
+            document.getElementById('psi0Value').textContent = psi0.toFixed(3);
+            document.getElementById('phiValue').textContent = phi.toFixed(3);
+            document.getElementById('freqValue').textContent = freq.toFixed(0) + ' Hz';
+            
+            // Calculate derived metrics
+            const efficiency = Math.min(100, (psi0 * phi * (freq / 432) * 85)).toFixed(1);
+            const coherence = (psi0 * (freq / 432)).toFixed(3);
+            const tunneling = (psi0 * phi * 10).toFixed(1);
+            const power = (psi0 * phi * freq * 0.3).toFixed(1);
+            
+            // Update metrics
+            document.getElementById('efficiency').textContent = efficiency + '%';
+            document.getElementById('coherence').textContent = coherence;
+            document.getElementById('tunneling').textContent = tunneling + 'x';
+            document.getElementById('power').textContent = power;
+            
+            // Update fusion core visual
+            const core = document.getElementById('fusionCore');
+            const intensity = psi0 * phi;
+            core.style.background = `radial-gradient(circle, 
+                hsl(${(freq - 300) * 0.6}, 100%, ${50 + intensity * 20}%), 
+                hsl(${300 + psi0 * 60}, 100%, ${30 + phi * 20}%))`;
+            core.style.boxShadow = `0 0 ${20 + intensity * 20}px rgba(255,255,0,${0.5 + intensity * 0.3})`;
+        }
+        
+        function toggleSimulation() {
+            const button = document.querySelector('.start-button');
+            
+            if (!isRunning) {
+                isRunning = true;
+                button.textContent = '⏹️ Stop Fusion Sequence';
+                button.style.background = 'linear-gradient(135deg, #ff00ff, #ffff00)';
+                
+                // Start animation
+                let time = 0;
+                animationInterval = setInterval(() => {
+                    time += 0.1;
+                    const psi0 = parseFloat(document.getElementById('psi0Slider').value);
+                    const phi = parseFloat(document.getElementById('phiSlider').value);
+                    
+                    // Animate fusion core
+                    const core = document.getElementById('fusionCore');
+                    const pulse = Math.sin(time * 2) * 0.5 + 0.5;
+                    core.style.transform = `rotate(${time * 50}deg) scale(${1 + pulse * 0.3})`;
+                    
+                    // Update metrics with fluctuations
+                    const fluctuation = Math.sin(time) * 0.1;
+                    const efficiency = Math.min(100, (psi0 * phi * 85 + fluctuation * 10)).toFixed(1);
+                    const power = (psi0 * phi * 432 * 0.3 + fluctuation * 50).toFixed(1);
+                    
+                    document.getElementById('efficiency').textContent = efficiency + '%';
+                    document.getElementById('power').textContent = power;
+                }, 100);
+            } else {
+                isRunning = false;
+                button.textContent = '🚀 Initialize Fusion Sequence';
+                button.style.background = 'linear-gradient(135deg, #00ffff, #ff00ff)';
+                clearInterval(animationInterval);
+                
+                // Reset fusion core
+                const core = document.getElementById('fusionCore');
+                core.style.transform = '';
+                updateSimulation();
+            }
+        }
+        
+        // Initialize on load
+        window.addEventListener('load', updateSimulation);
+    </script>
 </body>
 </html>
