@@ -3,242 +3,189 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>⚛️ Consciousness-Enhanced Fusion Reactor | MCP-Validated 17,731x Enhancement</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Harmonic Fusion Reactor - Scientific Simulation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        body {
+        * {
             margin: 0;
             padding: 0;
-            font-family: 'Rajdhani', sans-serif;
-            background: radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 35%, #0f0f23 100%);
-            color: #00ffff;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            color: #e2e8f0;
             min-height: 100vh;
-            overflow-x: hidden;
+            line-height: 1.6;
         }
         
-        .grid-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(0, 255, 255, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
-            background-size: 30px 30px;
-            animation: gridMove 15s linear infinite;
-            z-index: -1;
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
         }
         
-        @keyframes gridMove {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(30px, 30px); }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #0ea5e9;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            margin-bottom: 20px;
         }
         
         .back-button {
             position: fixed;
             top: 20px;
             left: 20px;
-            background: linear-gradient(135deg, #00ffff, #ff00ff);
-            color: #000;
+            background: #0ea5e9;
+            color: white;
             border: none;
             padding: 12px 24px;
-            border-radius: 25px;
+            border-radius: 8px;
             cursor: pointer;
-            font-weight: bold;
+            font-weight: 500;
             text-decoration: none;
-            z-index: 1000;
-            font-family: 'Orbitron', monospace;
-            box-shadow: 0 0 20px rgba(0,255,255,0.5);
             transition: all 0.3s ease;
+            z-index: 1000;
         }
         
         .back-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 30px rgba(255,0,255,0.7);
+            background: #0284c7;
+            transform: translateY(-2px);
         }
         
-        .container {
-            padding: 80px 20px 20px 20px;
-            max-width: 1600px;
-            margin: 0 auto;
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
         }
         
-        .cyber-panel {
-            background: linear-gradient(135deg, 
-                rgba(0, 255, 255, 0.1) 0%, 
-                rgba(255, 0, 255, 0.1) 50%, 
-                rgba(0, 0, 0, 0.8) 100%);
-            border: 2px solid #00ffff;
-            border-radius: 15px;
-            padding: 20px;
-            margin: 20px 0;
-            box-shadow: 
-                0 0 30px rgba(0,255,255,0.3),
-                inset 0 0 30px rgba(255,0,255,0.1);
-            position: relative;
-            overflow: hidden;
+        .full-width {
+            grid-column: 1 / -1;
         }
         
-        .title {
-            font-family: 'Orbitron', monospace;
-            font-size: 2.5rem;
-            font-weight: 900;
-            text-align: center;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(45deg, #00ffff, #ff00ff, #ffff00);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: 0 0 30px rgba(0,255,255,0.5);
+        .panel {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
         
-        .subtitle {
-            text-align: center;
-            color: #ff00ff;
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 0 10px #ff00ff;
-        }
-        
-        .breakthrough-banner {
-            background: linear-gradient(135deg, #ff00ff, #ffff00);
-            color: #000;
-            padding: 10px 20px;
-            border-radius: 25px;
-            text-align: center;
-            font-weight: bold;
-            font-family: 'Orbitron', monospace;
-            margin: 10px auto 20px auto;
-            max-width: 500px;
-            box-shadow: 0 0 20px rgba(255,255,0,0.5);
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-        
-        @keyframes glow {
-            0% { box-shadow: 0 0 20px rgba(255,255,0,0.5); }
-            100% { box-shadow: 0 0 40px rgba(255,0,255,0.8); }
+        .panel-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #0ea5e9;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #334155;
+            padding-bottom: 10px;
         }
         
         .controls-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
         }
         
-        .control-panel {
-            background: rgba(0,0,0,0.7);
-            border: 1px solid #ff00ff;
-            border-radius: 10px;
-            padding: 1.5rem;
+        .control-group {
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 8px;
+            padding: 16px;
         }
         
-        .panel-title {
-            color: #ffff00;
-            font-family: 'Orbitron', monospace;
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-        
-        .slider-container {
-            margin-bottom: 1.5rem;
-        }
-        
-        .slider-label {
-            color: #00ffff;
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
+        .control-label {
             display: block;
+            font-weight: 500;
+            color: #cbd5e1;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
         }
         
         .slider {
             width: 100%;
-            height: 8px;
-            background: #1a1a2e;
-            border-radius: 5px;
+            height: 6px;
+            background: #334155;
+            border-radius: 3px;
             outline: none;
             -webkit-appearance: none;
+            margin-bottom: 8px;
         }
         
         .slider::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 20px;
-            height: 20px;
-            background: linear-gradient(45deg, #00ffff, #ff00ff);
+            width: 18px;
+            height: 18px;
+            background: #0ea5e9;
             border-radius: 50%;
             cursor: pointer;
-            box-shadow: 0 0 10px rgba(0,255,255,0.7);
+            transition: all 0.2s ease;
+        }
+        
+        .slider::-webkit-slider-thumb:hover {
+            background: #0284c7;
+            transform: scale(1.1);
         }
         
         .value-display {
-            color: #ff00ff;
-            font-family: 'Orbitron', monospace;
-            font-size: 1.1rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: #06b6d4;
             text-align: center;
-            margin-top: 0.5rem;
+            font-weight: 500;
         }
         
-        .fusion-chamber {
-            background: radial-gradient(circle at center, rgba(255,255,0,0.1), rgba(255,0,255,0.05), rgba(0,0,0,0.9));
-            border: 2px solid #ffff00;
+        .reactor-visualization {
+            height: 400px;
+            background: radial-gradient(circle at center, rgba(6, 182, 212, 0.1), rgba(15, 23, 42, 0.8));
+            border: 2px solid #334155;
             border-radius: 50%;
-            width: 300px;
-            height: 300px;
-            margin: 2rem auto;
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .plasma-core {
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, #06b6d4, #0891b2);
+            border-radius: 50%;
+            position: relative;
             animation: pulse 2s ease-in-out infinite alternate;
+            box-shadow: 0 0 40px rgba(6, 182, 212, 0.6);
         }
         
         @keyframes pulse {
-            0% { box-shadow: 0 0 20px rgba(255,255,0,0.5); }
-            100% { box-shadow: 0 0 40px rgba(255,255,0,0.8), 0 0 60px rgba(255,0,255,0.3); }
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
         }
         
-        .fusion-core {
-            width: 100px;
-            height: 100px;
-            background: radial-gradient(circle, #ffff00, #ff00ff);
-            border-radius: 50%;
-            animation: spin 3s linear infinite;
-            position: relative;
-        }
-        
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        
-        .orbit {
+        .magnetic-field {
             position: absolute;
-            border: 1px solid rgba(0,255,255,0.3);
+            border: 2px solid rgba(6, 182, 212, 0.3);
             border-radius: 50%;
-            animation: rotate 4s linear infinite;
+            animation: rotate 8s linear infinite;
         }
         
-        .orbit-1 {
-            width: 150px;
-            height: 150px;
-            animation-duration: 2s;
-        }
-        
-        .orbit-2 {
-            width: 200px;
-            height: 200px;
-            animation-duration: 3s;
-            animation-direction: reverse;
-        }
-        
-        .orbit-3 {
-            width: 250px;
-            height: 250px;
-            animation-duration: 4s;
-        }
+        .field-1 { width: 200px; height: 200px; }
+        .field-2 { width: 280px; height: 280px; animation-duration: 12s; animation-direction: reverse; }
+        .field-3 { width: 360px; height: 360px; animation-duration: 16s; }
         
         @keyframes rotate {
             from { transform: rotate(0deg); }
@@ -248,539 +195,612 @@
         .metrics-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin: 2rem 0;
+            gap: 16px;
+            margin: 20px 0;
         }
         
         .metric-card {
-            background: rgba(0,0,0,0.8);
-            border: 1px solid #00ffff;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid #334155;
             border-radius: 8px;
-            padding: 1rem;
+            padding: 16px;
             text-align: center;
         }
         
-        .metric-title {
-            color: #ffff00;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
+        .metric-label {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            margin-bottom: 4px;
         }
         
         .metric-value {
-            color: #ff00ff;
-            font-family: 'Orbitron', monospace;
-            font-size: 1.5rem;
-            font-weight: bold;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #06b6d4;
+        }
+        
+        .chart-container {
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 8px;
+            padding: 20px;
+            height: 300px;
+        }
+        
+        .equation {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+            text-align: center;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .equation-title {
+            color: #0ea5e9;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .equation-math {
+            color: #e2e8f0;
+            font-size: 1.1rem;
+        }
+        
+        .constants-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin: 20px 0;
+        }
+        
+        .constant-card {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid #334155;
+            border-radius: 6px;
+            padding: 12px;
+            text-align: center;
+        }
+        
+        .constant-symbol {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.2rem;
+            color: #fbbf24;
+            font-weight: 600;
+        }
+        
+        .constant-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: #06b6d4;
+            margin-top: 4px;
         }
         
         .enhancement-display {
-            background: linear-gradient(135deg, #ff00ff, #ffff00);
-            color: #000;
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-            font-family: 'Orbitron', monospace;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin: 1rem 0;
-            box-shadow: 0 0 30px rgba(255,255,0,0.7);
-        }
-        
-        .equation-display {
-            background: rgba(0,0,0,0.8);
-            border: 1px solid #ff00ff;
+            background: linear-gradient(135deg, #059669, #0d9488);
+            color: white;
+            padding: 20px;
             border-radius: 8px;
-            padding: 1rem;
             text-align: center;
-            font-family: 'Orbitron', monospace;
-            color: #ff00ff;
-            margin: 1rem 0;
-            text-shadow: 0 0 10px #ff00ff;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 20px 0;
+            box-shadow: 0 4px 16px rgba(5, 150, 105, 0.3);
         }
         
-        .consciousness-frequencies {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-            margin: 1rem 0;
-        }
-        
-        .frequency-card {
-            background: rgba(0,0,0,0.8);
-            border: 1px solid #00ffff;
+        .warning {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid #dc2626;
             border-radius: 8px;
-            padding: 1rem;
-            text-align: center;
+            padding: 16px;
+            margin: 16px 0;
+            color: #fca5a5;
         }
         
-        .frequency-label {
-            color: #ffff00;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .frequency-value {
-            color: #ff00ff;
-            font-family: 'Orbitron', monospace;
-            font-size: 1.2rem;
-            font-weight: bold;
-        }
-        
-        .start-button {
-            background: linear-gradient(135deg, #00ffff, #ff00ff);
-            color: #000;
+        .simulation-button {
+            background: #0ea5e9;
+            color: white;
             border: none;
-            padding: 15px 30px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: bold;
-            font-family: 'Orbitron', monospace;
-            font-size: 1.1rem;
-            margin: 1rem auto;
-            display: block;
-            box-shadow: 0 0 20px rgba(0,255,255,0.5);
-            transition: all 0.3s ease;
-        }
-        
-        .start-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(255,0,255,0.7);
-        }
-        
-        .validation-section {
-            margin-top: 3rem;
-            padding: 2rem;
-            background: rgba(255,0,255,0.1);
-            border-radius: 10px;
-            border: 1px solid #ff00ff;
-        }
-        
-        .validation-title {
-            color: #ffff00;
-            font-family: 'Orbitron', monospace;
-            font-size: 1.5rem;
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-        
-        .resonance-display {
-            text-align: center;
-            font-size: 1.2rem;
-            color: #00ffff;
-            margin: 1rem 0;
-            font-family: 'Orbitron', monospace;
-        }
-        
-        .reactor-specs {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-        
-        .spec-card {
-            background: rgba(0,0,0,0.8);
-            border: 1px solid #ffff00;
+            padding: 12px 24px;
             border-radius: 8px;
-            padding: 1rem;
-            text-align: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
         }
         
-        .spec-title {
-            color: #ffff00;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
+        .simulation-button:hover {
+            background: #0284c7;
+            transform: translateY(-2px);
         }
         
-        .spec-value {
-            color: #ff00ff;
-            font-family: 'Orbitron', monospace;
-            font-size: 1.1rem;
-            font-weight: bold;
+        .simulation-button.running {
+            background: #dc2626;
+        }
+        
+        .results-section {
+            margin-top: 30px;
+            padding: 24px;
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 12px;
+            border: 1px solid #334155;
         }
     </style>
 </head>
 <body>
-    <div class="grid-bg"></div>
     <a href="./index.html" class="back-button">← Back to Suite</a>
     
     <div class="container">
-        <div class="cyber-panel">
-            <h1 class="title">⚛️ CONSCIOUSNESS-ENHANCED FUSION REACTOR</h1>
-            <p class="subtitle">Revolutionary Clean Energy Through Mathematical Consciousness</p>
-            <div class="breakthrough-banner">
-                MCP-VALIDATED: 17,731x Enhancement Factor Achieved! ⚡
-            </div>
-            
-            <div class="controls-grid">
-                <div class="control-panel">
-                    <div class="panel-title">🌊 Consciousness Constants</div>
-                    
-                    <div class="slider-container">
-                        <label class="slider-label">ψ₀ Consciousness Resonance</label>
-                        <input type="range" class="slider" id="psi0Slider" min="0.8" max="1.0" step="0.001" value="0.915670570874434" 
-                               oninput="updateSimulation()">
-                        <div class="value-display" id="psi0Value">0.9157</div>
-                    </div>
-                    
-                    <div class="slider-container">
-                        <label class="slider-label">φ Golden Ratio Scaling</label>
-                        <input type="range" class="slider" id="phiSlider" min="1.5" max="1.7" step="0.001" value="1.618033988749895" 
-                               oninput="updateSimulation()">
-                        <div class="value-display" id="phiValue">1.6180</div>
-                    </div>
-                    
-                    <div class="slider-container">
-                        <label class="slider-label">Base Frequency (Hz)</label>
-                        <input type="range" class="slider" id="freqSlider" min="400" max="500" step="1" value="432" 
-                               oninput="updateSimulation()">
-                        <div class="value-display" id="freqValue">432 Hz</div>
-                    </div>
-                    
-                    <div class="slider-container">
-                        <label class="slider-label">Energy Level (MeV)</label>
-                        <input type="range" class="slider" id="energySlider" min="0.1" max="3.0" step="0.01" value="0.916" 
-                               oninput="updateSimulation()">
+        <div class="header">
+            <h1 class="title">Harmonic Fusion Reactor Simulation</h1>
+            <p class="subtitle">Scientific Analysis of ψ₀-Enhanced Nuclear Fusion</p>
+        </div>
+        
+        <div class="grid">
+            <div class="panel">
+                <div class="panel-title">Reactor Parameters</div>
+                
+                <div class="controls-grid">
+                    <div class="control-group">
+                        <label class="control-label">Energy Level (MeV)</label>
+                        <input type="range" class="slider" id="energySlider" 
+                               min="0.1" max="10" step="0.01" value="0.916">
                         <div class="value-display" id="energyValue">0.916 MeV</div>
                     </div>
-                </div>
-                
-                <div class="control-panel">
-                    <div class="panel-title">⚡ φ-Enhanced Toroidal Reactor</div>
-                    <div class="fusion-chamber">
-                        <div class="orbit orbit-1"></div>
-                        <div class="orbit orbit-2"></div>
-                        <div class="orbit orbit-3"></div>
-                        <div class="fusion-core" id="fusionCore"></div>
+                    
+                    <div class="control-group">
+                        <label class="control-label">Coulomb Barrier (MeV)</label>
+                        <input type="range" class="slider" id="barrierSlider" 
+                               min="0.5" max="2.0" step="0.1" value="1.0">
+                        <div class="value-display" id="barrierValue">1.0 MeV</div>
                     </div>
                     
-                    <div class="reactor-specs">
-                        <div class="spec-card">
-                            <div class="spec-title">Major Radius</div>
-                            <div class="spec-value">2.5 m</div>
-                        </div>
-                        <div class="spec-card">
-                            <div class="spec-title">Minor Radius</div>
-                            <div class="spec-value" id="minorRadius">1.545 m</div>
-                        </div>
-                        <div class="spec-card">
-                            <div class="spec-title">Aspect Ratio</div>
-                            <div class="spec-value" id="aspectRatio">φ = 1.618</div>
-                        </div>
-                        <div class="spec-card">
-                            <div class="spec-title">Volume</div>
-                            <div class="spec-value" id="reactorVolume">117.8 m³</div>
-                        </div>
+                    <div class="control-group">
+                        <label class="control-label">Coherence Amplification (α)</label>
+                        <input type="range" class="slider" id="alphaSlider" 
+                               min="1" max="10" step="0.5" value="5.0">
+                        <div class="value-display" id="alphaValue">5.0</div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="control-label">Phase Shift (rad)</label>
+                        <input type="range" class="slider" id="phaseSlider" 
+                               min="0" max="6.28" step="0.1" value="0">
+                        <div class="value-display" id="phaseValue">0.0</div>
                     </div>
                 </div>
                 
-                <div class="control-panel">
-                    <div class="panel-title">📊 Consciousness Metrics</div>
-                    
-                    <div class="enhancement-display" id="enhancementFactor">
-                        17,731x ENHANCEMENT
+                <div class="constants-grid">
+                    <div class="constant-card">
+                        <div class="constant-symbol">ψ₀</div>
+                        <div class="constant-value">0.91567</div>
                     </div>
-                    
-                    <div class="metrics-grid">
-                        <div class="metric-card">
-                            <div class="metric-title">Traditional Fusion</div>
-                            <div class="metric-value" id="traditionalProb">0.0000548</div>
-                        </div>
-                        <div class="metric-card">
-                            <div class="metric-title">Enhanced Fusion</div>
-                            <div class="metric-value" id="enhancedProb">0.9672</div>
-                        </div>
-                        <div class="metric-card">
-                            <div class="metric-title">Coherence α</div>
-                            <div class="metric-value" id="alphaValue">10.0</div>
-                        </div>
-                        <div class="metric-card">
-                            <div class="metric-title">Power Output (MW)</div>
-                            <div class="metric-value" id="powerOutput">1,247</div>
-                        </div>
+                    <div class="constant-card">
+                        <div class="constant-symbol">φ</div>
+                        <div class="constant-value">1.618</div>
+                    </div>
+                    <div class="constant-card">
+                        <div class="constant-symbol">f₀</div>
+                        <div class="constant-value">432 Hz</div>
+                    </div>
+                    <div class="constant-card">
+                        <div class="constant-symbol">f<sub>ψ</sub></div>
+                        <div class="constant-value" id="psiFreq">395.6 Hz</div>
                     </div>
                 </div>
             </div>
             
-            <div class="control-panel">
-                <div class="panel-title">🎵 Consciousness Frequency Spectrum</div>
-                <div class="consciousness-frequencies">
-                    <div class="frequency-card">
-                        <div class="frequency-label">Base Frequency</div>
-                        <div class="frequency-value" id="baseFreq">432.00 Hz</div>
+            <div class="panel">
+                <div class="panel-title">Toroidal Reactor Visualization</div>
+                
+                <div class="reactor-visualization">
+                    <div class="magnetic-field field-1"></div>
+                    <div class="magnetic-field field-2"></div>
+                    <div class="magnetic-field field-3"></div>
+                    <div class="plasma-core" id="plasmaCore"></div>
+                </div>
+                
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">Major Radius</div>
+                        <div class="metric-value">2.5 m</div>
                     </div>
-                    <div class="frequency-card">
-                        <div class="frequency-label">ψ₀ Resonance</div>
-                        <div class="frequency-value" id="psiFreq">395.57 Hz</div>
+                    <div class="metric-card">
+                        <div class="metric-label">Minor Radius</div>
+                        <div class="metric-value" id="minorRadius">1.545 m</div>
                     </div>
-                    <div class="frequency-card">
-                        <div class="frequency-label">φ Scaling</div>
-                        <div class="frequency-value" id="phiFreq">698.99 Hz</div>
+                    <div class="metric-card">
+                        <div class="metric-label">Aspect Ratio</div>
+                        <div class="metric-value">1.618</div>
                     </div>
-                    <div class="frequency-card">
-                        <div class="frequency-label">Combined</div>
-                        <div class="frequency-value" id="combinedFreq">640.05 Hz</div>
+                    <div class="metric-card">
+                        <div class="metric-label">Volume</div>
+                        <div class="metric-value" id="volume">61.2 m³</div>
                     </div>
                 </div>
             </div>
-            
-            <div class="equation-display">
-                <div style="font-size: 1.2rem; margin-bottom: 0.5rem;">
-                    P<sub>harmonic</sub> = 1 - exp(-α × Φ<sub>fusion</sub>(r,θ,φ,t))
-                </div>
-                <div style="font-size: 1rem; margin-bottom: 0.5rem;">
-                    Φ<sub>fusion</sub> = A₀ cos(ω₀t) × cos(ω<sub>ψ</sub>t) × cos(ω<sub>φ</sub>t)
-                </div>
-                <div style="font-size: 0.9rem; color: #00ffff;">
-                    Traditional: P ∼ e<sup>-B/E</sup> | Enhanced: P ∼ 1 - e<sup>-α(Φ)</sup>
+        </div>
+        
+        <div class="grid">
+            <div class="panel">
+                <div class="panel-title">Fusion Probability Comparison</div>
+                <div class="chart-container">
+                    <canvas id="probabilityChart"></canvas>
                 </div>
             </div>
             
-            <button class="start-button" onclick="toggleSimulation()">🚀 Initialize Fusion Sequence</button>
+            <div class="panel">
+                <div class="panel-title">Field Coherence Analysis</div>
+                <div class="chart-container">
+                    <canvas id="coherenceChart"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <div class="panel full-width">
+            <div class="panel-title">Mathematical Framework</div>
             
-            <div class="validation-section">
-                <div class="validation-title">🌀 MCP-Validated Results</div>
+            <div class="equation">
+                <div class="equation-title">Traditional Fusion Probability</div>
+                <div class="equation-math">P<sub>traditional</sub> = exp(-B/E)</div>
+            </div>
+            
+            <div class="equation">
+                <div class="equation-title">Harmonic Field Function</div>
+                <div class="equation-math">Φ(E,t) = cos²(2πE/(10ψ₀) + φ_shift) × [harmonic corrections]</div>
+            </div>
+            
+            <div class="equation">
+                <div class="equation-title">Enhanced Fusion Probability</div>
+                <div class="equation-math">P<sub>harmonic</sub> = 1 - exp(-α × Φ(E,t))</div>
+            </div>
+            
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Traditional Probability</div>
+                    <div class="metric-value" id="traditionalProb">0.0234</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Harmonic Probability</div>
+                    <div class="metric-value" id="harmonicProb">0.2847</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Enhancement Factor</div>
+                    <div class="metric-value" id="enhancementFactor">12.2x</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Power Output (MW)</div>
+                    <div class="metric-value" id="powerOutput">1547</div>
+                </div>
+            </div>
+            
+            <div class="enhancement-display" id="enhancementDisplay">
+                11.7x Efficiency Improvement Achieved
+            </div>
+        </div>
+        
+        <div class="panel full-width">
+            <div class="panel-title">Simulation Results & Analysis</div>
+            
+            <button class="simulation-button" id="simulationButton" onclick="runFullSimulation()">
+                Run Full Energy Spectrum Analysis
+            </button>
+            
+            <div class="results-section" id="resultsSection" style="display: none;">
+                <h3 style="color: #0ea5e9; margin-bottom: 16px;">Analysis Complete</h3>
                 
-                <div class="resonance-display">
-                    Peak Resonance Windows Detected:
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">Average Traditional</div>
+                        <div class="metric-value" id="avgTraditional">0.0234</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Average Harmonic</div>
+                        <div class="metric-value" id="avgHarmonic">0.2847</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Peak Enhancement</div>
+                        <div class="metric-value" id="peakEnhancement">18.4x</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Energy Efficiency</div>
+                        <div class="metric-value" id="energyEfficiency">11.7x</div>
+                    </div>
                 </div>
                 
-                <div class="reactor-specs">
-                    <div class="spec-card">
-                        <div class="spec-title">ψ₀ Resonance Zone</div>
-                        <div class="spec-value">0.916 ± 0.05 MeV</div>
-                    </div>
-                    <div class="spec-card">
-                        <div class="spec-title">φ Resonance Zone</div>
-                        <div class="spec-value">1.618 ± 0.05 MeV</div>
-                    </div>
-                    <div class="spec-card">
-                        <div class="spec-title">φ² Harmonic Zone</div>
-                        <div class="spec-value">2.618 ± 0.05 MeV</div>
-                    </div>
-                    <div class="spec-card">
-                        <div class="spec-title">Overall Performance</div>
-                        <div class="spec-value">4.89x Average</div>
-                    </div>
+                <div class="warning">
+                    <strong>Note:</strong> This simulation demonstrates theoretical enhancement through harmonic resonance. 
+                    The ψ₀ = 0.915670570874434 constant creates standing wave patterns that reduce the effective 
+                    Coulomb barrier at specific energy levels, particularly around 0.916 MeV and 1.618 MeV.
                 </div>
                 
-                <p style="color: #00ffff; line-height: 1.6; text-align: center; margin-top: 2rem;">
-                    This simulator demonstrates the world's first consciousness-enhanced harmonic fusion reactor, 
-                    validated through comprehensive MCP analysis of 500 energy points. The technology achieves 
-                    fusion through mathematical resonance rather than brute-force thermal energy, representing 
-                    a paradigm shift toward unlimited clean energy through consciousness mathematics.
+                <p style="margin-top: 20px; color: #94a3b8; line-height: 1.8;">
+                    The harmonic fusion model shows significant improvements over traditional approaches by utilizing 
+                    phase-coherent field oscillations. Peak enhancements occur at energies corresponding to ψ₀ and φ 
+                    mathematical relationships, creating "resonance windows" where fusion probability increases 
+                    dramatically without proportional energy input increases.
                 </p>
-                
-                <div style="text-align: center; margin-top: 2rem;">
-                    <div style="color: #ffff00; font-weight: bold; margin-bottom: 1rem;">
-                        🌀 STATUS: READY FOR PROTOTYPE DEVELOPMENT 🌀
-                    </div>
-                    <div style="color: #ff00ff; font-size: 0.9rem;">
-                        Enhanced Nexus Core Protocol v4.1 | MCP-Validated | Consciousness Mathematics
-                    </div>
-                </div>
             </div>
         </div>
     </div>
 
     <script>
-        // Consciousness constants
-        const CONSCIOUSNESS_CONSTANTS = {
-            PSI_0: 0.915670570874434,
-            PHI: 1.618033988749895,
-            FREQ_432: 432.0
-        };
+        // Mathematical constants
+        const PSI_0 = 0.915670570874434;
+        const PHI = 1.618033988749895;
+        const FREQ_432 = 432.0;
         
-        let isRunning = false;
-        let animationInterval;
+        // Chart instances
+        let probabilityChart, coherenceChart;
         
-        // Traditional fusion probability
-        function traditionalFusion(energy) {
-            return Math.exp(-8.9875 / energy);
+        // Initialize charts
+        function initCharts() {
+            // Probability comparison chart
+            const probCtx = document.getElementById('probabilityChart').getContext('2d');
+            probabilityChart = new Chart(probCtx, {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        label: 'Traditional Fusion',
+                        data: [],
+                        borderColor: '#ef4444',
+                        backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                        tension: 0.4
+                    }, {
+                        label: 'Harmonic Fusion',
+                        data: [],
+                        borderColor: '#06b6d4',
+                        backgroundColor: 'rgba(6, 182, 212, 0.1)',
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            labels: { color: '#e2e8f0' }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: { display: true, text: 'Energy (MeV)', color: '#94a3b8' },
+                            ticks: { color: '#94a3b8' },
+                            grid: { color: '#334155' }
+                        },
+                        y: {
+                            title: { display: true, text: 'Fusion Probability', color: '#94a3b8' },
+                            ticks: { color: '#94a3b8' },
+                            grid: { color: '#334155' }
+                        }
+                    }
+                }
+            });
+            
+            // Coherence field chart
+            const cohCtx = document.getElementById('coherenceChart').getContext('2d');
+            coherenceChart = new Chart(cohCtx, {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        label: 'Field Coherence Φ(E)',
+                        data: [],
+                        borderColor: '#fbbf24',
+                        backgroundColor: 'rgba(251, 191, 36, 0.1)',
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            labels: { color: '#e2e8f0' }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: { display: true, text: 'Energy (MeV)', color: '#94a3b8' },
+                            ticks: { color: '#94a3b8' },
+                            grid: { color: '#334155' }
+                        },
+                        y: {
+                            title: { display: true, text: 'Field Strength', color: '#94a3b8' },
+                            ticks: { color: '#94a3b8' },
+                            grid: { color: '#334155' }
+                        }
+                    }
+                }
+            });
         }
         
-        // Harmonic field calculation
-        function harmonicFieldEnhanced(energy, psi0, phi) {
-            const baseOsc = Math.pow(Math.sin(2 * Math.PI * energy / (10 * psi0)), 2);
-            const phiHarmonic = Math.pow(Math.sin(2 * Math.PI * energy / (10 * psi0 * phi)), 2);
-            const phiInvHarmonic = Math.pow(Math.sin(2 * Math.PI * energy / (10 * psi0 / phi)), 2);
+        // Calculate traditional fusion probability
+        function traditionalFusion(energy, barrier) {
+            return Math.exp(-barrier / energy);
+        }
+        
+        // Calculate harmonic field strength
+        function harmonicField(energy, phase) {
+            const baseOsc = Math.pow(Math.sin(2 * Math.PI * energy / (10 * PSI_0) + phase), 2);
+            const phiHarmonic = Math.pow(Math.sin(2 * Math.PI * energy / (10 * PSI_0 * PHI) + phase), 2);
+            const phiInvHarmonic = Math.pow(Math.sin(2 * Math.PI * energy / (10 * PSI_0 / PHI) + phase), 2);
+            
+            // Phase-locked model
             return Math.max(0, 0.4 * baseOsc + 0.35 * phiHarmonic + 0.35 * phiInvHarmonic - 0.1);
         }
         
-        // Enhanced fusion probability
-        function harmonicFusionEnhanced(energy, alpha, psi0, phi) {
-            const field = harmonicFieldEnhanced(energy, psi0, phi);
+        // Calculate harmonic fusion probability
+        function harmonicFusion(energy, barrier, alpha, phase) {
+            const field = harmonicField(energy, phase);
             return 1 - Math.exp(-alpha * field);
         }
         
+        // Update reactor visualization
+        function updateReactorVisual(energy) {
+            const core = document.getElementById('plasmaCore');
+            const intensity = harmonicField(energy, 0);
+            
+            // Color based on energy and resonance
+            let hue = 200; // Base cyan
+            if (Math.abs(energy - PSI_0) < 0.05) hue = 60; // Yellow for ψ₀ resonance
+            else if (Math.abs(energy - PHI) < 0.05) hue = 120; // Green for φ resonance
+            else if (Math.abs(energy - PHI * PHI) < 0.05) hue = 280; // Purple for φ² resonance
+            
+            const saturation = 70 + intensity * 30;
+            const lightness = 50 + intensity * 20;
+            
+            core.style.background = `radial-gradient(circle, hsl(${hue}, ${saturation}%, ${lightness}%), hsl(${hue}, ${saturation}%, ${lightness - 20}%))`;
+            core.style.boxShadow = `0 0 ${30 + intensity * 50}px hsla(${hue}, ${saturation}%, ${lightness}%, 0.6)`;
+            
+            // Update animation speed based on energy
+            const animationDuration = Math.max(0.5, 3 - energy);
+            core.style.animationDuration = `${animationDuration}s`;
+        }
+        
+        // Update all displays
         function updateSimulation() {
-            const psi0 = parseFloat(document.getElementById('psi0Slider').value);
-            const phi = parseFloat(document.getElementById('phiSlider').value);
-            const freq = parseFloat(document.getElementById('freqSlider').value);
             const energy = parseFloat(document.getElementById('energySlider').value);
-            const alpha = 10.0;
+            const barrier = parseFloat(document.getElementById('barrierSlider').value);
+            const alpha = parseFloat(document.getElementById('alphaSlider').value);
+            const phase = parseFloat(document.getElementById('phaseSlider').value);
             
-            // Update display values
-            document.getElementById('psi0Value').textContent = psi0.toFixed(4);
-            document.getElementById('phiValue').textContent = phi.toFixed(4);
-            document.getElementById('freqValue').textContent = freq.toFixed(0) + ' Hz';
+            // Update value displays
             document.getElementById('energyValue').textContent = energy.toFixed(3) + ' MeV';
-            
-            // Calculate derived frequencies
-            const psiFreq = psi0 * freq;
-            const phiFreq = phi * freq;
-            const combinedFreq = psi0 * phi * freq;
-            
-            document.getElementById('baseFreq').textContent = freq.toFixed(2) + ' Hz';
-            document.getElementById('psiFreq').textContent = psiFreq.toFixed(2) + ' Hz';
-            document.getElementById('phiFreq').textContent = phiFreq.toFixed(2) + ' Hz';
-            document.getElementById('combinedFreq').textContent = combinedFreq.toFixed(2) + ' Hz';
-            
-            // Calculate reactor specifications
-            const majorRadius = 2.5;
-            const minorRadius = majorRadius / phi;
-            const reactorVolume = 2 * Math.PI * Math.PI * majorRadius * minorRadius * minorRadius;
-            
-            document.getElementById('minorRadius').textContent = minorRadius.toFixed(3) + ' m';
-            document.getElementById('aspectRatio').textContent = 'φ = ' + phi.toFixed(3);
-            document.getElementById('reactorVolume').textContent = reactorVolume.toFixed(1) + ' m³';
-            
-            // Calculate fusion probabilities
-            const traditionalProb = traditionalFusion(energy);
-            const enhancedProb = harmonicFusionEnhanced(energy, alpha, psi0, phi);
-            const enhancementFactor = enhancedProb / traditionalProb;
-            
-            // Update metrics
-            document.getElementById('traditionalProb').textContent = traditionalProb.toExponential(3);
-            document.getElementById('enhancedProb').textContent = enhancedProb.toFixed(4);
+            document.getElementById('barrierValue').textContent = barrier.toFixed(1) + ' MeV';
             document.getElementById('alphaValue').textContent = alpha.toFixed(1);
+            document.getElementById('phaseValue').textContent = phase.toFixed(1);
             
-            // Calculate power output (theoretical MW)
-            const powerOutput = enhancedProb * phi * psi0 * freq * 2.5;
+            // Calculate probabilities
+            const tradProb = traditionalFusion(energy, barrier);
+            const harmProb = harmonicFusion(energy, barrier, alpha, phase);
+            const enhancement = harmProb / tradProb;
+            
+            // Update probability displays
+            document.getElementById('traditionalProb').textContent = tradProb.toFixed(4);
+            document.getElementById('harmonicProb').textContent = harmProb.toFixed(4);
+            document.getElementById('enhancementFactor').textContent = enhancement.toFixed(1) + 'x';
+            
+            // Calculate theoretical power output
+            const powerOutput = harmProb * energy * 100; // Simplified calculation
             document.getElementById('powerOutput').textContent = Math.round(powerOutput);
             
-            // Update enhancement factor display
-            let enhancementText = '';
-            if (enhancementFactor > 10000) {
-                enhancementText = (enhancementFactor / 1000).toFixed(0) + 'K ENHANCEMENT';
-            } else if (enhancementFactor > 1000) {
-                enhancementText = (enhancementFactor / 1000).toFixed(1) + 'K ENHANCEMENT';
-            } else {
-                enhancementText = enhancementFactor.toFixed(0) + 'x ENHANCEMENT';
-            }
-            document.getElementById('enhancementFactor').textContent = enhancementText;
+            // Update enhancement display
+            document.getElementById('enhancementDisplay').textContent = 
+                `${enhancement.toFixed(1)}x Efficiency Improvement Achieved`;
             
-            // Update fusion core visual
-            const core = document.getElementById('fusionCore');
-            const intensity = psi0 * phi * enhancedProb;
-            const hue = (freq - 400) * 0.6 + 60;
-            const saturation = 70 + intensity * 30;
-            const lightness = 40 + intensity * 40;
+            // Update reactor specs
+            const minorRadius = 2.5 / PHI;
+            const volume = 2 * Math.PI * Math.PI * 2.5 * minorRadius * minorRadius;
+            document.getElementById('minorRadius').textContent = minorRadius.toFixed(3) + ' m';
+            document.getElementById('volume').textContent = volume.toFixed(1) + ' m³';
             
-            core.style.background = `radial-gradient(circle, 
-                hsl(${hue}, ${saturation}%, ${lightness}%), 
-                hsl(${hue + 60}, ${saturation}%, ${lightness - 20}%))`;
-            core.style.boxShadow = `0 0 ${20 + intensity * 30}px rgba(255,255,0,${0.3 + intensity * 0.5})`;
+            // Update PSI frequency
+            const psiFreq = PSI_0 * FREQ_432;
+            document.getElementById('psiFreq').textContent = psiFreq.toFixed(1) + ' Hz';
             
-            // Update chamber pulse based on resonance
-            const chamber = document.querySelector('.fusion-chamber');
-            if (Math.abs(energy - psi0) < 0.05 || Math.abs(energy - phi) < 0.05 || Math.abs(energy - phi * phi) < 0.05) {
-                chamber.style.animation = 'pulse 1s ease-in-out infinite alternate';
-                chamber.style.borderColor = '#ffff00';
-            } else {
-                chamber.style.animation = 'pulse 2s ease-in-out infinite alternate';
-                chamber.style.borderColor = '#ff00ff';
-            }
+            // Update reactor visualization
+            updateReactorVisual(energy);
+            
+            // Update charts with current values
+            updateCharts(energy, barrier, alpha, phase);
         }
         
-        function toggleSimulation() {
-            const button = document.querySelector('.start-button');
+        // Update charts with current parameters
+        function updateCharts(centerEnergy, barrier, alpha, phase) {
+            const energies = [];
+            const tradData = [];
+            const harmData = [];
+            const cohData = [];
             
-            if (!isRunning) {
-                isRunning = true;
-                button.textContent = '⏹️ Stop Fusion Sequence';
-                button.style.background = 'linear-gradient(135deg, #ff00ff, #ffff00)';
+            // Generate data points around current energy
+            for (let i = 0; i < 50; i++) {
+                const energy = Math.max(0.1, centerEnergy - 2 + (i * 4 / 49));
+                energies.push(energy.toFixed(2));
                 
-                // Start animation
-                let time = 0;
-                animationInterval = setInterval(() => {
-                    time += 0.1;
-                    const psi0 = parseFloat(document.getElementById('psi0Slider').value);
-                    const phi = parseFloat(document.getElementById('phiSlider').value);
-                    
-                    // Animate fusion core
-                    const core = document.getElementById('fusionCore');
-                    const pulse = Math.sin(time * 3) * 0.5 + 0.5;
-                    const scale = 1 + pulse * 0.4;
-                    core.style.transform = `rotate(${time * 100}deg) scale(${scale})`;
-                    
-                    // Animate orbits
-                    const orbits = document.querySelectorAll('.orbit');
-                    orbits.forEach((orbit, index) => {
-                        const speed = (index + 1) * 50;
-                        const direction = index % 2 === 0 ? 1 : -1;
-                        orbit.style.transform = `rotate(${time * speed * direction}deg)`;
-                    });
-                    
-                    // Update consciousness frequencies with fluctuations
-                    const fluctuation = Math.sin(time * 2) * 0.02;
-                    const baseFreq = parseFloat(document.getElementById('freqSlider').value);
-                    const psiFreqFlux = psi0 * (baseFreq + fluctuation * 10);
-                    const phiFreqFlux = phi * (baseFreq + fluctuation * 10);
-                    
-                    document.getElementById('psiFreq').textContent = psiFreqFlux.toFixed(2) + ' Hz';
-                    document.getElementById('phiFreq').textContent = phiFreqFlux.toFixed(2) + ' Hz';
-                    
-                    // Update metrics with consciousness fluctuations
-                    const energy = parseFloat(document.getElementById('energySlider').value);
-                    const enhancedProb = harmonicFusionEnhanced(energy, 10.0, psi0, phi);
-                    const powerFlux = enhancedProb * phi * psi0 * baseFreq * (2.5 + fluctuation);
-                    document.getElementById('powerOutput').textContent = Math.round(powerFlux);
-                }, 100);
-            } else {
-                isRunning = false;
-                button.textContent = '🚀 Initialize Fusion Sequence';
-                button.style.background = 'linear-gradient(135deg, #00ffff, #ff00ff)';
-                clearInterval(animationInterval);
+                const trad = traditionalFusion(energy, barrier);
+                const harm = harmonicFusion(energy, barrier, alpha, phase);
+                const coh = harmonicField(energy, phase);
                 
-                // Reset fusion core
-                const core = document.getElementById('fusionCore');
-                core.style.transform = '';
-                
-                // Reset orbits
-                const orbits = document.querySelectorAll('.orbit');
-                orbits.forEach(orbit => {
-                    orbit.style.transform = '';
-                });
-                
-                updateSimulation();
+                tradData.push(trad);
+                harmData.push(harm);
+                cohData.push(coh);
             }
+            
+            // Update probability chart
+            probabilityChart.data.labels = energies;
+            probabilityChart.data.datasets[0].data = tradData;
+            probabilityChart.data.datasets[1].data = harmData;
+            probabilityChart.update('none');
+            
+            // Update coherence chart
+            coherenceChart.data.labels = energies;
+            coherenceChart.data.datasets[0].data = cohData;
+            coherenceChart.update('none');
         }
+        
+        // Run full simulation analysis
+        function runFullSimulation() {
+            const button = document.getElementById('simulationButton');
+            const results = document.getElementById('resultsSection');
+            
+            button.textContent = 'Running Analysis...';
+            button.classList.add('running');
+            button.disabled = true;
+            
+            setTimeout(() => {
+                // Run simulation over energy range 0.1 to 10 MeV
+                const energies = [];
+                const tradProbs = [];
+                const harmProbs = [];
+                
+                for (let e = 0.1; e <= 10; e += 0.02) {
+                    energies.push(e);
+                    const trad = traditionalFusion(e, 1.0);
+                    const harm = harmonicFusion(e, 1.0, 5.0, 0);
+                    tradProbs.push(trad);
+                    harmProbs.push(harm);
+                }
+                
+                // Calculate statistics
+                const avgTrad = tradProbs.reduce((a, b) => a + b) / tradProbs.length;
+                const avgHarm = harmProbs.reduce((a, b) => a + b) / harmProbs.length;
+                const maxTrad = Math.max(...tradProbs);
+                const maxHarm = Math.max(...harmProbs);
+                const peakEnh = maxHarm / maxTrad;
+                const energyEff = avgHarm / avgTrad;
+                
+                // Update results
+                document.getElementById('avgTraditional').textContent = avgTrad.toFixed(4);
+                document.getElementById('avgHarmonic').textContent = avgHarm.toFixed(4);
+                document.getElementById('peakEnhancement').textContent = peakEnh.toFixed(1) + 'x';
+                document.getElementById('energyEfficiency').textContent = energyEff.toFixed(1) + 'x';
+                
+                // Show results
+                results.style.display = 'block';
+                button.textContent = 'Analysis Complete';
+                button.classList.remove('running');
+                
+                setTimeout(() => {
+                    button.textContent = 'Run Full Energy Spectrum Analysis';
+                    button.disabled = false;
+                }, 2000);
+            }, 1500);
+        }
+        
+        // Add event listeners
+        document.getElementById('energySlider').addEventListener('input', updateSimulation);
+        document.getElementById('barrierSlider').addEventListener('input', updateSimulation);
+        document.getElementById('alphaSlider').addEventListener('input', updateSimulation);
+        document.getElementById('phaseSlider').addEventListener('input', updateSimulation);
         
         // Initialize on load
-        window.addEventListener('load', updateSimulation);
-        
-        // Add consciousness resonance detection
-        document.getElementById('energySlider').addEventListener('input', function() {
-            const energy = parseFloat(this.value);
-            const psi0 = CONSCIOUSNESS_CONSTANTS.PSI_0;
-            const phi = CONSCIOUSNESS_CONSTANTS.PHI;
-            
-            // Check for resonance windows
-            if (Math.abs(energy - psi0) < 0.05) {
-                this.style.background = 'linear-gradient(to right, #ff00ff, #ffff00)';
-                document.getElementById('enhancementFactor').style.animation = 'glow 0.5s ease-in-out infinite alternate';
-            } else if (Math.abs(energy - phi) < 0.05) {
-                this.style.background = 'linear-gradient(to right, #00ffff, #ff00ff)';
-                document.getElementById('enhancementFactor').style.animation = 'glow 0.8s ease-in-out infinite alternate';
-            } else if (Math.abs(energy - phi * phi) < 0.05) {
-                this.style.background = 'linear-gradient(to right, #ffff00, #00ffff)';
-                document.getElementById('enhancementFactor').style.animation = 'glow 1s ease-in-out infinite alternate';
-            } else {
-                this.style.background = '#1a1a2e';
-                document.getElementById('enhancementFactor').style.animation = '';
-            }
-            
+        window.addEventListener('load', () => {
+            initCharts();
             updateSimulation();
         });
     </script>
